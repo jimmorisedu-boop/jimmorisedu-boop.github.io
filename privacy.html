@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Политика конфиденциальности Pedro3000 и описание работы с Google user data.">
+  <link rel="canonical" href="https://jimmorisedu-boop.github.io/privacy.html">
+  <title>Pedro3000 — политика конфиденциальности</title>
+  <style>
+    :root { color-scheme: light; --ink: #172236; --muted: #526078; --line: #d7dfeb; --paper: #ffffff; --wash: #f4f7fb; --accent: #1456c0; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--wash); color: var(--ink); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    header, main, footer { width: min(100% - 2rem, 72rem); margin-inline: auto; }
+    header { padding: 3rem 0 1.5rem; }
+    main { display: grid; gap: 1rem; padding-bottom: 3rem; }
+    section { background: var(--paper); border: 1px solid var(--line); border-radius: 1rem; padding: clamp(1.25rem, 3vw, 2rem); }
+    h1, h2 { line-height: 1.2; margin: 0 0 .8rem; }
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+    h2 { font-size: clamp(1.3rem, 3vw, 1.9rem); }
+    p { max-width: 72ch; margin: .65rem 0; }
+    ul { padding-left: 1.25rem; }
+    li + li { margin-top: .45rem; }
+    a { color: var(--accent); text-underline-offset: .18em; }
+    a:focus-visible { outline: 3px solid #f4a623; outline-offset: 3px; }
+    nav { display: flex; flex-wrap: wrap; gap: .8rem 1.2rem; margin-top: 1.25rem; }
+    .notice { border-left: .3rem solid var(--accent); padding: .75rem 1rem; background: #eef4ff; }
+    footer { color: var(--muted); padding: 0 0 2.5rem; font-size: .95rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Политика конфиденциальности Pedro3000</h1>
+    <p>Pedro3000 описывает ниже доступ к Google user data, цели обработки, хранение и передачу данных.</p>
+    <nav aria-label="Навигация по документам">
+      <a href="index.html">О сервисе</a>
+      <a href="privacy.html">Конфиденциальность</a>
+      <a href="terms.html">Условия использования</a>
+    </nav>
+  </header>
+
+  <main>
+    <section aria-labelledby="scope-title">
+      <h2 id="scope-title">Какие данные Google Drive доступны</h2>
+      <p>Pedro3000 запрашивает ограниченный scope Google Drive: <strong>drive.file</strong>. Он даёт доступ только к файлам, которые пользователь выбрал для приложения, и к файлам, созданным самим приложением. Сервис не получает полный доступ ко всему Google Drive.</p>
+      <p>В пределах этого scope сервис может читать, создавать, изменять и удалять медиафайлы и связанные служебные файлы, когда это нужно для хранения, доставки, проверки целостности и восстановления рабочих объектов.</p>
+    </section>
+
+    <section aria-labelledby="purpose-title">
+      <h2 id="purpose-title">Зачем используются данные</h2>
+      <ul>
+        <li>Хранить исходные видео, EXR-секвенции, референсы, промежуточные материалы и результаты, выбранные для проекта.</li>
+        <li>Передавать назначенному вычислительному исполнителю только нужные файлы и параметры задания.</li>
+        <li>Проверять SHA-256, размер и связь файла с конкретной версией, чтобы не перепутать исходник или результат.</li>
+        <li>Восстанавливать подтверждённые объекты после сбоя локального кэша или передачи.</li>
+      </ul>
+      <p>Сайт, API и PostgreSQL на VPS ведут проекты, версии, пользователей и задания. Тяжёлые файлы размещаются в выбранном Google Drive; расчёты выполняются отдельным назначенным исполнителем. Авторизация Drive проходит через Google, а серверные Drive-токены не передаются пользовательскому интерфейсу.</p>
+    </section>
+
+    <section aria-labelledby="security-title">
+      <h2 id="security-title">Токены и передача</h2>
+      <p>OAuth-токены хранятся в закрытом серверном vault с ограниченными правами доступа. Пользовательский интерфейс и назначенный исполнитель не получают OAuth-токен Google Drive; исполнитель получает только служебные данные, необходимые для задания.</p>
+      <p>Данные могут передаваться Google и назначенным исполнителям только в объёме, необходимом для описанных операций хранения, доставки, подготовки, расчёта и просмотра результата. Pedro3000 не запрашивает контакты, Gmail, календарь или полный Drive.</p>
+      <p>Google user data не используется для обучения или настройки сторонних foundation models. Сервис не продаёт эти данные и не использует их для рекламы.</p>
+    </section>
+
+    <section aria-labelledby="lifecycle-title">
+      <h2 id="lifecycle-title">Срок хранения и удаление</h2>
+      <p>Точный срок хранения зависит от жизненного цикла проекта, задач, версий и настроек оператора; в этой политике не устанавливается фиксированное число дней. PostgreSQL хранит записи о проектах и заданиях, а подтверждённые результаты и контрольные копии могут оставаться в backup или checkpoint-хранилищах.</p>
+      <p>Удаление через интерфейс не означает немедленное удаление каждой резервной копии или записи, которую нужно сохранить для восстановления, безопасности или обязательного учёта. Оператор обрабатывает запрос на удаление с учётом активных задач, backup и таких обязательных записей.</p>
+      <p>Отзыв доступа Pedro3000 в настройках Google прекращает автономный доступ к Drive. После отзыва передача и восстановление через Drive не продолжатся, пока владелец не подключит доступ заново.</p>
+    </section>
+
+    <section aria-labelledby="rights-title">
+      <h2 id="rights-title">Вопросы о данных</h2>
+      <p>Запросы об авторизации, доступе, исправлении или удалении данных направляйте оператору: <strong>maxheygenavatar@gmail.com</strong>. В запросе достаточно описать аккаунт и проект; не отправляйте пароли, OAuth-коды или токены.</p>
+      <p class="notice">Политика обновляется, если меняются способы доступа к Google user data, хранения или передачи данных.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p><a href="index.html">Вернуться к описанию Pedro3000</a></p>
+  </footer>
+</body>
+</html>

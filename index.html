@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Pedro3000 — закрытый командный сервис управления видео и EXR: исходники, маски, референсы, расчёты и просмотр результатов.">
+  <link rel="canonical" href="https://jimmorisedu-boop.github.io/index.html">
+  <title>Pedro3000 — управление видео и EXR</title>
+  <style>
+    :root { color-scheme: light; --ink: #172236; --muted: #526078; --line: #d7dfeb; --paper: #ffffff; --wash: #f4f7fb; --accent: #1456c0; --accent-ink: #ffffff; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--wash); color: var(--ink); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    header, main, footer { width: min(100% - 2rem, 72rem); margin-inline: auto; }
+    header { padding: 3.5rem 0 2rem; }
+    main { display: grid; gap: 1rem; padding-bottom: 3rem; }
+    section, .card { background: var(--paper); border: 1px solid var(--line); border-radius: 1rem; padding: clamp(1.25rem, 3vw, 2rem); }
+    .eyebrow { color: var(--accent); font-weight: 700; letter-spacing: .05em; text-transform: uppercase; font-size: .8rem; }
+    h1, h2 { line-height: 1.15; margin: 0 0 .8rem; }
+    h1 { font-size: clamp(2.2rem, 6vw, 4.5rem); max-width: 11ch; }
+    h2 { font-size: clamp(1.35rem, 3vw, 2rem); }
+    p { max-width: 68ch; margin: .65rem 0; }
+    .lead { color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.25rem); max-width: 57ch; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 1rem; }
+    ul, ol { padding-left: 1.25rem; }
+    li + li { margin-top: .45rem; }
+    a { color: var(--accent); text-underline-offset: .18em; }
+    a:focus-visible { outline: 3px solid #f4a623; outline-offset: 3px; }
+    nav { display: flex; flex-wrap: wrap; gap: .8rem 1.2rem; margin-top: 1.25rem; }
+    .note { border-left: .3rem solid var(--accent); padding: .75rem 1rem; background: #eef4ff; }
+    footer { color: var(--muted); padding: 0 0 2.5rem; font-size: .95rem; }
+    @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Закрытый командный сервис</p>
+    <h1>Pedro3000</h1>
+    <p class="lead">Управление видео и EXR для командной подготовки, расчётов, просмотра и согласования результатов.</p>
+    <nav aria-label="Основная навигация">
+      <a href="index.html">О сервисе</a>
+      <a href="privacy.html">Конфиденциальность</a>
+      <a href="terms.html">Условия использования</a>
+      <a href="https://93.113.180.41/pedro3000/workspace/">Командный вход</a>
+    </nav>
+  </header>
+
+  <main>
+    <section aria-labelledby="about-title">
+      <h2 id="about-title">Что делает Pedro3000</h2>
+      <p>Сервис помогает команде вести шоты: принять видео или EXR-секвенцию, выбрать целевую голову и маску, закрепить референсы, передать задачу назначенному исполнителю и посмотреть подготовленный результат.</p>
+      <p>Это рабочая панель с проектами, версиями исходников, масками, референсами, событиями подготовки и результатами.</p>
+    </section>
+
+    <section aria-labelledby="flow-title">
+      <h2 id="flow-title">Как устроена обработка</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Проект и выбор</h3>
+          <p>Команда создаёт шот, выбирает исходные кадры, целевую область или голову, маску и один или несколько разрешённых референсов.</p>
+        </article>
+        <article class="card">
+          <h3>Хранение</h3>
+          <p>VPS обслуживает сайт, API, PostgreSQL и состояние заданий. Тяжёлые медиафайлы хранятся в выбранном Google Drive через отдельный серверный контур передачи.</p>
+        </article>
+        <article class="card">
+          <h3>Исполнитель</h3>
+          <p>Назначенный компьютер или исполнитель выполняет подготовку и расчёты; текущий статус виден в задании.</p>
+        </article>
+        <article class="card">
+          <h3>Проверка результата</h3>
+          <p>Сервис связывает результат с точными версиями исходника, маски, референсов, параметров и исполнителя, чтобы команда могла просмотреть и сравнить его.</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="boundaries-title">
+      <h2 id="boundaries-title">Границы сервиса</h2>
+      <ul>
+        <li>Вход предназначен для приглашённой команды; открытой регистрации нет.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="contact-title">
+      <h2 id="contact-title">Поддержка</h2>
+      <p>По вопросам доступа, авторизации Google или обработки данных: <strong>maxheygenavatar@gmail.com</strong>.</p>
+      <p>Описание работы с Google user data приведено в <a href="privacy.html">политике конфиденциальности</a>. Условия доступа и использования — в <a href="terms.html">условиях использования</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Pedro3000 · публичная информация сервиса</p>
+  </footer>
+</body>
+</html>
